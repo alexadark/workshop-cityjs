@@ -1,4 +1,14 @@
-import { Outlet } from "@remix-run/react";
+import { type MetaFunction, Outlet } from "@remix-run/react";
+
+export const meta: MetaFunction = () => {
+  return [
+    {
+      title: `Remix AI cms - about`,
+    },
+
+    { name: "description", content: "A simple cms powered by Remix and AI" },
+  ];
+};
 
 const About = () => {
   console.log(

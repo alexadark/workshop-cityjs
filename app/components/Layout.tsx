@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
     "color: blue; font-weight: bold;"
   );
   return (
-    <div className="flex flex-col min-h-screen border-2 border-blue-500 bg-blue-900 bg-opacity-30">
+    <div className="flex flex-col min-h-screen ">
       <Header />
       <main className="flex-grow  py-10 prose dark:prose-invert max-w-none">
         <div className="container">{children}</div>

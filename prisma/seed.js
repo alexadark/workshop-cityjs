@@ -10,10 +10,12 @@ async function main() {
       title: "Introduction to AI",
       content: loremIpsum({ count: 4, units: "paragraphs" }),
       published: true,
+      description: loremIpsum({ count: 1, units: "paragraphs" }),
     },
     {
       title: "Getting started with Remix",
       content: loremIpsum({ count: 4, units: "paragraphs" }),
+      createdAt: new Date("2022-01-01"),
     },
     {
       title: "Understanding React",
@@ -56,6 +58,7 @@ async function main() {
       data: {
         ...post,
         slug: slug,
+        description: post.content.slice(0, 100),
         published: true,
       },
     });

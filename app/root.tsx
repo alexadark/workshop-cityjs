@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -11,6 +11,15 @@ import styles from "./tailwind.css";
 import Layout from "./components/Layout";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
+
+export const meta: MetaFunction = () => {
+  return [
+    {
+      title: `Remix AI cms`,
+    },
+    { name: "description", content: "A simple cms powered by Remix and AI" },
+  ];
+};
 
 export default function App() {
   return (
@@ -26,7 +35,6 @@ export default function App() {
           <Outlet />
         </Layout>
         <ScrollRestoration />
-
         <Scripts />
         <LiveReload />
       </body>

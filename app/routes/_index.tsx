@@ -1,17 +1,30 @@
 import { PrismaClient } from "@prisma/client";
 import { LoaderFunction, json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
+import type { PostType } from "~/types";
 
 const prisma = new PrismaClient();
 
 export const loader: LoaderFunction = async () => {
-  const posts = await prisma.post.findMany();
-  const publishedPosts = posts.filter((post) => post.published);
-  return json({ posts: publishedPosts });
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    where: {
+      published: true,
+    },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+    },
+  });
+
+  return json({ posts });
 };
 
 const Blog = () => {
-  const { posts } = useLoaderData();
+  const { posts } = useLoaderData<{ posts: PostType[] }>() || {};
 
   return (
     <div className="max-w-sm mx-auto">

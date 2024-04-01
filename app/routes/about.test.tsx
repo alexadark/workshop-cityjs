@@ -1,7 +1,5 @@
-import React from "react";
-
-const Text = () => {
-  return <div>Text</div>;
+const Test = () => {
+  return <div>Test</div>;
 };
 
-export default Text;
+export default Test;
